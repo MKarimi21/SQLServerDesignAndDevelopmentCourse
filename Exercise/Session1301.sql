@@ -64,7 +64,8 @@ FROM
 GO
 ;
 
-CREATE PROC MOSI.DeleteOrders @StartOrderDate DATETIME,
+-- because I change row count to cast, i change create to alter
+ALTER PROC MOSI.DeleteOrders @StartOrderDate DATETIME,
 @EndOrderDate DATETIME AS BEGIN
 SET
     NOCOUNT ON;
@@ -74,8 +75,10 @@ WHERE
     OrderDate BETWEEN @StartOrderDate
     AND @EndOrderDate;
 
-PRINT @@ROWCOUNT + ' rows deleted.'
+PRINT CAST(@@ROWCOUNT AS VARCHAR(10)) + ' rows deleted.'
 END;
 
 GO
 ;
+
+EXECUTE MOSI.DeleteOrders '2000-01-01', '2020-01-01'
