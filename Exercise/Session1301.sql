@@ -51,3 +51,31 @@ SELECT
     *
 FROM
     Sales.SalesOrderHeader s
+GO
+;
+
+SELECT
+    s.CustomerID,
+    s.OrderDate,
+    s.SalesOrderID,
+    s.TotalDue INTO MOSI.SampleOrders
+FROM
+    Sales.SalesOrderHeader s
+GO
+;
+
+CREATE PROC MOSI.DeleteOrder @StartOrderDate DATETIME,
+@EndOrderDate DATETIME AS BEGIN
+SET
+    NOCOUNT ON;
+
+DELETE MOSI.SampleOrders
+WHERE
+    OrderDate BETWEEN @StartOrderDate
+    AND @EndOrderDate;
+
+PRINT @ @ROWCOUNT + ' rows deleted.'
+END;
+
+GO
+;
