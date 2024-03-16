@@ -30,7 +30,7 @@ DECLARE @V INT = 0;
 WHILE (@V <= 10) BEGIN PRINT '@V= ' + CAST(@V AS VARCHAR(2));
 
 SET
-    @V + = 1;
+    @V += 1;
 
 END;
 
@@ -60,3 +60,32 @@ END;
 GO
 ;
 
+-- export to json or xml
+SELECT
+    *
+FROM
+    Sales.Customer
+WHERE
+    CustomerID <= 2 FOR XML AUTO;
+
+GO
+;
+
+-- path
+SELECT
+    *
+FROM
+    Sales.Customer
+WHERE
+    CustomerID <= 2 FOR XML PATH;
+
+GO
+;
+
+-- Json path
+SELECT
+    *
+FROM
+    Sales.Customer
+WHERE
+    CustomerID <= 2 FOR JSON PATH
