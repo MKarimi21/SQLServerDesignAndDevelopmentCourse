@@ -64,7 +64,7 @@ FROM
 GO
 ;
 
-CREATE PROC MOSI.DeleteOrder @StartOrderDate DATETIME,
+CREATE PROC MOSI.DeleteOrders @StartOrderDate DATETIME,
 @EndOrderDate DATETIME AS BEGIN
 SET
     NOCOUNT ON;
@@ -74,7 +74,7 @@ WHERE
     OrderDate BETWEEN @StartOrderDate
     AND @EndOrderDate;
 
-PRINT @ @ROWCOUNT + ' rows deleted.'
+PRINT @@ROWCOUNT + ' rows deleted.'
 END;
 
 GO
