@@ -11,4 +11,21 @@ GO
 ;
 
 USE master;
+
 CREATE DATABASE [Test];
+
+DROP DATABASE [Test];
+
+GO
+;
+
+DISABLE TRIGGER MessageAfterCreatingDataBase ON ALL SERVER;
+
+GO
+;
+
+DROP TRIGGER MessageAfterCreatingDataBase ON ALL SERVER;
+
+GO
+;
+
