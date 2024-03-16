@@ -1,0 +1,2 @@
+-- Transaction
+-- ACID => Atomic, Consistent, Isolates, Durable
